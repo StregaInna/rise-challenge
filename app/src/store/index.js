@@ -1,9 +1,10 @@
 import { createStore, applyMiddleware } from 'redux';
+import axios from 'axios';
 import loggingMiddleware from 'redux-logger';
-import thunk from 'redux-thunk';
+import thunkMiddleWare from 'redux-thunk';
 import rootReducer from './rootReducer';
 
 export default createStore(
   rootReducer,
-  applyMiddleware(thunk, loggingMiddleware)
+  applyMiddleware(thunkMiddleWare.withExtraArgument({ axios }), loggingMiddleware)
 );

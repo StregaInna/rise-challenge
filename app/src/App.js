@@ -6,13 +6,17 @@ class App extends React.Component {
 
 
   async componentDidMount () {
-    this.props.fetchKnowledgeCheckBlocks()
+    await this.props.fetchKnowledgeCheckBlocks()
     console.dir(this.props.state)  
   }
   render () {
     return (
       <div>
-        <h1>Hello World</h1>
+        {(this.props.state.knowledgeCheckBlocks[0]) ? (
+          <h1>Knowlegde Check Blocks Loaded!</h1>
+        ) : (
+          <h1>Loading...</h1>
+        )}
       </div>
     )
   }
@@ -22,7 +26,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchKnowledgeCheckBlocks: () => dispatch(fetchKnowledgeCheckBlocks)
+  fetchKnowledgeCheckBlocks: () => dispatch(fetchKnowledgeCheckBlocks())
 })
 
 export default connect(mapStateToProps,mapDispatchToProps)(App)
