@@ -1,7 +1,7 @@
 const express = require('express')
 const morgan = require('morgan')
 const db = require('./dataBase')
-// we'll just use some variables as the "database" to get started
+// I moved the "database" to another file (./dataBase.js) because I find smaller, more moduler files easier to read
 
 
 function server() {
@@ -11,6 +11,15 @@ function server() {
   app.use(morgan('dev'))
 
   app.get('/knowledge-check-blocks', (req, res) => res.send(db.knowledgeCheckBlocks))
+  app.get('/form-state', (req, res) => res.send(db.formState)) 
+  //in a case with multiple users/courses, this API route would include more information on which user/course we are loading state for
+  app.put('/udpate-form-state', (req, res, next) => {
+    try {
+      db.formState = req.body.formState
+      res.send(db.formState)
+    } catch(error)
+      {next(error)}
+  })
 
   app.start = app.listen.bind(app, port, () => console.log(`Listening on port ${port}`))
 

@@ -20,7 +20,13 @@ const db = {
         ],
         feedback: 'I just love cookies and a warm cup of coffee!'
       }
-    ]
-  }
+    ],
+    formState: []
+//This is initiallized as an empty array. 
+//It will be populated in the redux store and returned to the server as an array of objects.
+//This array of objects can then be sent back to the front end if a user refreshes or navigates away and back, thus maintaining user-state on the server end.
+//In the sample case we technically only need a single object, but in a real use case there could be any number of questions in the knowledge check blocks,
+//  so we want to be able to iterate through them on the front end when loading user state from the server.  
+}
 
   module.exports = db
