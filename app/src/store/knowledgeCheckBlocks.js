@@ -16,10 +16,8 @@ export const setKnowledgeCheckBlocks = (knowledgeCheckBlocks) => {
 //THUNK CREATORS
 
 export const fetchKnowledgeCheckBlocks = () => {
-    console.log('inside thunk creator')
     return async (dispatch) => { 
         try { 
-            console.log('fetching data')
             const {data} = await axios.get('/knowledge-check-blocks')
             dispatch(setKnowledgeCheckBlocks(data))
         } catch (error) {
