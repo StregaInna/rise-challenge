@@ -1,12 +1,13 @@
 import React from 'react'
-import axios from 'axios'
+import { fetchKnowledgeCheckBlocks } from './store/knowledgeCheckBlocks'
+import {connect } from 'react-redux'
 
-export default class App extends React.Component {
+class App extends React.Component {
 
 
   async componentDidMount () {
-    const {data} = await axios.get('/knowledge-check-blocks')
-    console.dir(data)  
+    this.props.fetchKnowledgeCheckBlocks()
+    console.dir(this.props.state)  
   }
   render () {
     return (
@@ -16,4 +17,12 @@ export default class App extends React.Component {
     )
   }
 }
+const mapStateToProps = (state) => ({
+  state
+})
 
+const mapDispatchToProps = (dispatch) => ({
+  fetchKnowledgeCheckBlocks: () => dispatch(fetchKnowledgeCheckBlocks)
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(App)

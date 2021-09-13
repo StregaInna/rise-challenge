@@ -1,4 +1,9 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-export default combineReducers({
-});
+import knowledgeCheckBlocksReducer from './knowledgeCheckBlocks'
+
+const rootReducer = combineReducers({
+    knowledgeCheckBlocks: knowledgeCheckBlocksReducer
+})
+
+export default rootReducer
