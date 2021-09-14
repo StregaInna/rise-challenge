@@ -1,7 +1,7 @@
 import React from 'react'
 import { fetchKnowledgeCheckBlocks } from './store/knowledgeCheckBlocks'
 import {connect } from 'react-redux'
-import KnowledgeCheckForm from './components/KnowledgeCheckForm'
+import KnowledgeCheckBlock from './components/KnowledgeCheckBlock'
 
 class App extends React.Component {
 
@@ -18,7 +18,7 @@ class App extends React.Component {
             {this.props.state.knowledgeCheckBlocks.map((blockObject) => {
               return (
                 <div key={blockObject.question.text} >
-                  <KnowledgeCheckForm blockObject={blockObject} />
+                  <KnowledgeCheckBlock blockObject={blockObject} />
                 </div>
                 )})
             }

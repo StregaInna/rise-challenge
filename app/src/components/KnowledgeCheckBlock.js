@@ -1,5 +1,6 @@
 import React from 'react'
 import MediaSwtich from './MediaSwitch'
+import AnswerForm from './AnswerForm'
 
 export default class KnowledgeCheckBlock extends React.Component {
     constructor(props){
@@ -11,12 +12,11 @@ export default class KnowledgeCheckBlock extends React.Component {
     render() {
         return (
             <div>
-                <h1>{this.props.blockObject.question.text}</h1>
-                {(this.props.blockObject.question.media.type==='image')?(
+                <p>{this.props.blockObject.question.text}</p>
+                {(this.props.blockObject.question.media)?(
                     <MediaSwtich media={this.props.blockObject.question.media} />
                 ):(<div></div>)}
-                <form>
-                </form>
+                <AnswerForm answers={this.props.blockObject.answers} />
             </div>
         )
     }
