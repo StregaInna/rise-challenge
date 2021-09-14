@@ -1,8 +1,9 @@
 import React from 'react'
 import MediaSwtich from './MediaSwitch'
 import AnswerForm from './AnswerForm'
+import { connect } from 'react-redux'
 
-export default class KnowledgeCheckBlock extends React.Component {
+class KnowledgeCheckBlock extends React.Component {
     constructor(props){
         super(props)
         this.state = {
@@ -21,3 +22,8 @@ export default class KnowledgeCheckBlock extends React.Component {
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    state
+})
+export default connect(mapStateToProps)(KnowledgeCheckBlock)

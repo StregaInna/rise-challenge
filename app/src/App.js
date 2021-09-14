@@ -9,20 +9,21 @@ class App extends React.Component {
 
   async componentDidMount () {
     await this.props.fetchKnowledgeCheckBlocks()
-    await this.props.fetchFormState(this.props.state.knowledgeCheckBlocks.length)  
+    await this.props.fetchFormState(this.props.state.knowledgeCheckBlocks.length)
   }
   render () {
     return (
       <div>
         {(this.props.state.knowledgeCheckBlocks[0]) ? (
           <div>
-            {this.props.state.knowledgeCheckBlocks.map((blockObject, questionIndex) => {
-              return (
-                <div key={blockObject.question.text} >
-                  <KnowledgeCheckBlock blockObject={blockObject} questionIndex={questionIndex} />
-                </div>
-                )})
-            }
+            {(this.props.state.formState.length)?(<div>
+              {this.props.state.knowledgeCheckBlocks.map((blockObject, questionIndex) => {
+                return (
+                  <div key={blockObject.question.text} >
+                    <KnowledgeCheckBlock blockObject={blockObject} questionIndex={questionIndex} />
+                  </div>
+                  )})
+              }</div>):(<div></div>)}
           </div>
         ) : (
           <h1>Loading...</h1>

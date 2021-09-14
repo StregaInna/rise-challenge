@@ -7,13 +7,13 @@ import axios from 'axios'
 //ACTION CREATORS
 
 export const setFormState = (formState, blockCount) => {
-    if (!formState[0]){
+    if (!formState.length){
         for(let i = 0; i < blockCount; i++){
-            formState[i]={
+            formState.push({
                 answered: false,
                 selectedAnswer: '',
                 isCorrect: null
-            }
+            })
         }
     }//If a new user to this course, the database will supply an empty array as for state. 
     //In that case will are populating the array with the correct number of null values.
@@ -31,6 +31,7 @@ export const fetchFormState = (blockCount) => {
     return async (dispatch) => { 
         try { 
             const {data} = await axios.get('/form-state')
+            console.log('data',data)
             dispatch(setFormState(data, blockCount))
         } catch (error) {
             console.error(error)

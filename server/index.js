@@ -17,7 +17,7 @@ function server() {
   //in a case with multiple users/courses, this API route would include more information on which user/course we are loading state for
   app.put('/update-form-state', (req, res, next) => {
     try {
-      db.formState = req.body[0]
+      db.formState = req.body
       res.send(db.formState)
     } catch(error)
       {next(error)}

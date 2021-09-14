@@ -11,7 +11,14 @@ class AnswerForm extends React.Component {
             isCorrect: null
         }
         this.handleChange = this.handleChange.bind(this)
+        
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+    componentDidMount(){
+        console.log('Mount!')
+        console.dir(this.props.state.formState)
+        const formState = this.props.state.formState[this.props.questionIndex]
+        this.setState({...formState})
     }
     handleChange(event){
         this.setState({
