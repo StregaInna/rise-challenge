@@ -5,6 +5,7 @@ const db = {
           text: 'What is this a picture of?',
           media: {
             type: 'image',
+            altText: 'cookies and coffee',
             url: 'https://images.articulate.com/f:jpg%7Cpng,a:retain,b:fff/rise/courses/S3jQ2LjHDoRsPUQmR7dp6hA7-IaoYPA4/d229V-nstxA6tZdi.gif'
           }
         },
