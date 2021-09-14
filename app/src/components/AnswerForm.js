@@ -7,19 +7,22 @@ class AnswerForm extends React.Component {
         super(props)
         this.state = {
             answered: false,
-            selectedAnswer: ''
+            selectedAnswer: '',
+            isCorrect: null
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleChange(event){
         this.setState({
-            selectedAnswer: event.target.name
+            selectedAnswer: event.target.name,
+            isCorrect: event.target.value
         })
     }
-    handleSubmit(event){
+    handleSubmit = async(event) => {
         event.preventDefault()
-        this.props.updateFormState(this.props.state.formState, this.state, this.props.questionIndex)
+        await this.setState({answered: true})
+        this.props.udpateFormState(this.props.state.formState, {...this.state}, this.props.questionIndex)
     }
     render(){
         return(
@@ -28,7 +31,7 @@ class AnswerForm extends React.Component {
                     return(
                         <label key={answer.text} >
                             <input type="radio" name={answer.text} value={answer.isCorrect} 
-                                checked={this.state.selectedAnswer===answer.text}
+                                checked={this.state.selectedAnswer === answer.text}
                                 onChange={this.handleChange} />
                             {answer.text}
                         </label>

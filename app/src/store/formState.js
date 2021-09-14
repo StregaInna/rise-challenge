@@ -11,7 +11,8 @@ export const setFormState = (formState, blockCount) => {
         for(let i = 0; i < blockCount; i++){
             formState[i]={
                 answered: false,
-                selectedAnswer: ''
+                selectedAnswer: '',
+                isCorrect: null
             }
         }
     }//If a new user to this course, the database will supply an empty array as for state. 
@@ -41,6 +42,8 @@ export const updateFormState = (formState, objectState, objectIndex) => {
     formState[objectIndex] = objectState
     return async (dispatch) => {
         try {
+            console.log('dispatching:')
+            console.dir(formState)
             const {data} = await axios.put('/update-form-state', formState)
             dispatch(setFormState(data, formState.length))
 
