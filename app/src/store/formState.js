@@ -6,7 +6,18 @@ import axios from 'axios'
 
 //ACTION CREATORS
 
-export const setFormState = (formState) => {
+export const setFormState = (formState, blockCount) => {
+    if (!formState[0]){
+        for(let i = 0; i < blockCount; i++){
+            formState[i]={
+                answered: false,
+                selectedAnswer: ''
+            }
+        }
+    }//If a new user to this course, the database will supply an empty array as for state. 
+    //In that case will are populating the array with the correct number of null values.
+    //If we were using a real database we might have some sort of qustion ID# with each question, 
+    //  in that case our form state might be an object with those ID#s as key instead of an array.
     return {
         type: SET_FORM_STATE,
         formState
@@ -15,11 +26,24 @@ export const setFormState = (formState) => {
 
 //THUNK CREATORS
 
-export const fetchFormState = () => {
+export const fetchFormState = (blockCount) => {
     return async (dispatch) => { 
         try { 
             const {data} = await axios.get('/form-state')
-            dispatch(setFormState(data))
+            dispatch(setFormState(data, blockCount))
+        } catch (error) {
+            console.error(error)
+        }
+    }
+}
+
+export const updateFormState = (formState, objectState, objectIndex) => {
+    formState[objectIndex] = objectState
+    return async (dispatch) => {
+        try {
+            const {data} = await axios.put('/update-form-state', formState)
+            dispatch(setFormState(data, formState.length))
+
         } catch (error) {
             console.error(error)
         }
