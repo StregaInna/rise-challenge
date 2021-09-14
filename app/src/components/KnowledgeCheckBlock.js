@@ -16,7 +16,7 @@ export default class KnowledgeCheckBlock extends React.Component {
                 {(this.props.blockObject.question.media)?(
                     <MediaSwtich media={this.props.blockObject.question.media} />
                 ):(<div></div>)}
-                <AnswerForm answers={this.props.blockObject.answers} />
+                <AnswerForm answers={this.props.blockObject.answers} questionIndex={this.props.questionIndex} />
             </div>
         )
     }

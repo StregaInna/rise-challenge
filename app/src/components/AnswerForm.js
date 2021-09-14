@@ -4,8 +4,14 @@ export default class AnswerForm extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            answer: null
+            selectedAnswer: ''
         }
+        this.handleChange = this.handleChange.bind(this)
+    }
+    handleChange(event){
+        this.setState({
+            selectedAnswer: event.target.name
+        })
     }
     render(){
         return(
@@ -13,7 +19,9 @@ export default class AnswerForm extends React.Component {
                 {this.props.answers.map((answer)=>{
                     return(
                         <label>
-                            <input type="radio" name={answer.text} value={answer.isCorrect} />
+                            <input type="radio" name={answer.text} value={answer.isCorrect} 
+                                checked={this.state.selectedAnswer===answer.text}
+                                onChange={this.handleChange} />
                             {answer.text}
                         </label>
                     )

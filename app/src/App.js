@@ -15,10 +15,10 @@ class App extends React.Component {
       <div>
         {(this.props.state.knowledgeCheckBlocks[0]) ? (
           <div>
-            {this.props.state.knowledgeCheckBlocks.map((blockObject) => {
+            {this.props.state.knowledgeCheckBlocks.map((blockObject, questionIndex) => {
               return (
                 <div key={blockObject.question.text} >
-                  <KnowledgeCheckBlock blockObject={blockObject} />
+                  <KnowledgeCheckBlock blockObject={blockObject} questionIndex={questionIndex} />
                 </div>
                 )})
             }
