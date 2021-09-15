@@ -23,7 +23,6 @@ class FeedBackCard extends React.Component {
         })
     }
     handleClick(event){
-        event.preventDefault()
         const newObjectState = {
             answered: false,
             selectedAnswer: '',
@@ -33,7 +32,7 @@ class FeedBackCard extends React.Component {
     }
     render(){
         return(
-            <div>
+            <div className="feedback_card">
                 <div>
                     {(this.state.isCorrect)?(
                         <div>

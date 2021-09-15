@@ -21,15 +21,19 @@ class AnswerForm extends React.Component {
         this.setState({...formState})
     }
     handleChange(event){
-        this.setState({
-            selectedAnswer: event.target.name,
-            isCorrect: event.target.value
-        })
+        if (!this.state.answered){
+            this.setState({
+                selectedAnswer: event.target.name,
+                isCorrect: event.target.value
+            })
+        }
     }
     handleSubmit = async(event) => {
         event.preventDefault()
-        await this.setState({answered: true})
-        this.props.udpateFormState(this.props.state.formState, {...this.state}, this.props.questionIndex)
+        if (!this.state.answered){
+            await this.setState({answered: true})
+            this.props.udpateFormState(this.props.state.formState, {...this.state}, this.props.questionIndex)
+        }
     }
     render(){
         return(

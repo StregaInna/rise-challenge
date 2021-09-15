@@ -13,11 +13,13 @@ class KnowledgeCheckBlock extends React.Component {
     }
     render() {
         return (
-            <div>
-                <p>{this.props.blockObject.question.text}</p>
-                {(this.props.blockObject.question.media)?(
-                    <MediaSwtich media={this.props.blockObject.question.media} />
-                ):(<div></div>)}
+            <div className="knowledge_check_block">
+                <div className="question" >
+                    <p className="questions_text" >{this.props.blockObject.question.text}</p>
+                    {(this.props.blockObject.question.media)?(
+                        <div className="question_media"><MediaSwtich media={this.props.blockObject.question.media} /></div>
+                    ):(<div></div>)}
+                </div>
                 <AnswerForm answers={this.props.blockObject.answers} questionIndex={this.props.questionIndex} />
                 {(this.props.state.formState[this.props.questionIndex].answered)?(
                     <div>
