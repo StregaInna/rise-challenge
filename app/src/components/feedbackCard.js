@@ -15,14 +15,15 @@ class FeedBackCard extends React.Component {
     }
     componentDidMount(){
         const formState = this.props.state.formState[this.props.questionIndex]
-        const blockObject =this.props.state.knowledgeCheckBlocks[this.props.questionIndex]
+        const blockObject = this.props.state.knowledgeCheckBlocks[this.props.questionIndex]
         this.setState({
             isCorrect: formState.isCorrect,
-            feedBack: blockObject.feedBack
-
+            feedBack: blockObject.feedback
         })
     }
-    handleClick(event){
+    handleClick(event) {
+        //debugger
+        event.preventDefault()
         const newObjectState = {
             answered: false,
             selectedAnswer: '',
@@ -37,7 +38,7 @@ class FeedBackCard extends React.Component {
                     {(this.state.isCorrect)?(
                         <div>
                             <div> <CgCheckO /> </div>
-                            <dv> <p>Correct</p> </dv>
+                            <div> <p>Correct</p> </div>
                         </div>
                     ):(
                         <div>

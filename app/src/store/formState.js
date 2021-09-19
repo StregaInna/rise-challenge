@@ -31,7 +31,6 @@ export const fetchFormState = (blockCount) => {
     return async (dispatch) => { 
         try { 
             const {data} = await axios.get('/form-state')
-            console.log('data',data)
             dispatch(setFormState(data, blockCount))
         } catch (error) {
             console.error(error)

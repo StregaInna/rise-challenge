@@ -13,7 +13,7 @@ class App extends React.Component {
   }
   render () {
     return (
-      <div>
+      <div id="app">
         {(this.props.state.knowledgeCheckBlocks[0]) ? (
           <div>
             {(this.props.state.formState.length)?(<div>

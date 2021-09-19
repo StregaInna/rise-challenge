@@ -14,17 +14,18 @@ code {
 
 div {
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
+  flex-flow: column;
 }
 form {
   display: flex;
   flex-direction: column;
 }
-img { 
-  object-fit: contain;
-  flex-shrink: 1;
+img {
+  max-width: 100%;
+  object-fit: fill;
+  vertical-align: bottom;
 }
 .knowledge_check_block{
   flex-basis: 1;
@@ -38,11 +39,20 @@ img {
   align-content: left;
 }
 .question_media {
-  flex-shrink: 1;
-  align-items: center;
+  display: flex;
 }
 .feedback_card {
   flex-direction: column;
   background-color: lightgray;
 
+}
+
+#app {
+  width: stretch;
+  border-width: 1px;
+  border-color: gray;
+  border-style: solid;
+  margin-top: 1cm;
+  margin-left: 1cm;
+  margin-right: 1cm;
 }
