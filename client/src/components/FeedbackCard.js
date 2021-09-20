@@ -23,6 +23,10 @@ class FeedBackCard extends React.Component {
     }
     handleClick(event) {
         //debugger
+        //This is the location of the bug. When exicuting (but not when compiling) I get an error stating that
+        //  this.props.updateFormState is not a function. I cannot detect any difference between how it is imported
+        //  and called here and how it is imported and call in the answer form component the would cause this,
+        //  but obviously I am missing something. 
         event.preventDefault()
         const newObjectState = {
             answered: false,

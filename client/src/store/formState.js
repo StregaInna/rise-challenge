@@ -15,10 +15,11 @@ export const setFormState = (formState, blockCount) => {
                 isCorrect: null
             })
         }
-    }//If a new user to this course, the database will supply an empty array as for state. 
-    //In that case will are populating the array with the correct number of null values.
+    }//If this is a new user to this course, the database will supply an empty array as for state. 
+    //In that case will are populating the array with the correct number of objects representing an unansered state.
     //If we were using a real database we might have some sort of qustion ID# with each question, 
-    //  in that case our form state might be an object with those ID#s as key instead of an array.
+    //  in that case our form state might be an object with those ID#s as keys instead of an array.
+    //  That could prevent some bugs that might come up if a user were continue a course that has been updated since they started.
     return {
         type: SET_FORM_STATE,
         formState

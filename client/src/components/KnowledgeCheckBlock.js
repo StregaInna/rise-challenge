@@ -1,7 +1,7 @@
 import React from 'react'
 import MediaSwtich from './MediaSwitch'
 import AnswerForm from './AnswerForm'
-import FeedbackCard from './feedbackCard'
+import FeedbackCard from './FeedbackCard'
 import { connect } from 'react-redux'
 
 class KnowledgeCheckBlock extends React.Component {

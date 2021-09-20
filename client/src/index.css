@@ -40,11 +40,12 @@ img {
 }
 .question_media {
   display: flex;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .feedback_card {
   flex-direction: column;
   background-color: lightgray;
-
 }
 
 #app {

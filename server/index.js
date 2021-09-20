@@ -14,7 +14,7 @@ function server() {
 
   app.get('/knowledge-check-blocks', (req, res) => res.send(db.knowledgeCheckBlocks))
   app.get('/form-state', (req, res) => res.send(db.formState)) 
-  //in a case with multiple users/courses, this API route would include more information on which user/course we are loading state for
+  //in a case with multiple users/courses, the formstate API routes would include more information on which user/course we are loading state for, and some form of authentication
   app.put('/update-form-state', (req, res, next) => {
     try {
       db.formState = req.body
