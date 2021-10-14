@@ -23,10 +23,12 @@ class FeedBackCard extends React.Component {
     }
     handleClick = async(event) => {
         // debugger
-        //This is the location of the bug. When exicuting (but not when compiling) I get an error stating that
-        //  this.props.updateFormState is not a function. I cannot detect any difference between how it is imported
-        //  and called here and how it is imported and call in the answer form component the would cause this,
-        //  but obviously I am missing something. 
+        //This is the location of the bug. When exicuiting (but not when compiling) I got an error stating that
+        //  this.props.updateFormState is not a function. I couldn't detect any difference between how it is imported
+        //  and called here and how it is imported and called in the answer form component that would cause this,
+        //  but obviously I was missing something.
+        //  making this function async resolved the issue. It seems that async thunks need to be dispatched by async functions,
+        //  but i'm not sure why that was resulting in this particular error type. 
         event.preventDefault()
         const newObjectState = {
             answered: false,
