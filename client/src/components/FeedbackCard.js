@@ -21,8 +21,8 @@ class FeedBackCard extends React.Component {
             feedBack: blockObject.feedback
         })
     }
-    handleClick(event) {
-        //debugger
+    handleClick = async(event) => {
+        // debugger
         //This is the location of the bug. When exicuting (but not when compiling) I get an error stating that
         //  this.props.updateFormState is not a function. I cannot detect any difference between how it is imported
         //  and called here and how it is imported and call in the answer form component the would cause this,
@@ -33,7 +33,7 @@ class FeedBackCard extends React.Component {
             selectedAnswer: '',
             isCorrect: null
         }
-        this.props.updateFormState(this.props.state.formState, newObjectState, this.props.questionIndex)
+        this.props.udpateFormState(this.props.state.formState, newObjectState, this.props.questionIndex)
     }
     render(){
         return(
